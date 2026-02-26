@@ -1,0 +1,1174 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital-Wealth - Unlock Your Earning Potential</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f0f2f5;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Animations */
+        .hidden {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hidden-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hidden-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .hidden-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease-out;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translate(0) scale(1);
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #ff6b6b);
+            z-index: 1001;
+            transition: width 0.1s ease;
+            box-shadow: 0 0 10px rgba(102,126,234,0.5);
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Counter Numbers */
+        .counter-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .register-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            transition: transform 0.3s !important;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            color: white !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(102,126,234,0.95), rgba(118,75,162,0.95)), 
+                        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Mystery Badge */
+        .mystery-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Features Grid */
+        .how-it-works {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(102,126,234,0.3);
+        }
+
+        .feature-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            transition: transform 0.5s;
+        }
+
+        .feature-card:hover .feature-image {
+            transform: scale(1.1);
+        }
+
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+
+        .feature-icon {
+            position: absolute;
+            bottom: 10px;
+            left: 20px;
+            font-size: 2rem;
+            z-index: 1;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-description {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .earning-potential {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Lifestyle Gallery */
+        .lifestyle-gallery {
+            padding: 4rem 5%;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .gallery-overlay p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+        }
+
+        .testimonial-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-country {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .testimonial-impact {
+            background: rgba(255,215,0,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Section */
+        .whatsapp-section {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .whatsapp-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .whatsapp-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1.5rem 0;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            display: inline-block;
+            border: 2px solid white;
+            letter-spacing: 2px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Floating Buttons */
+        .floating-register {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(255,107,107,0.5);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .floating-register:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.5);
+            z-index: 999;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            font-size: 2rem;
+            color: #667eea;
+            cursor: pointer;
+            position: absolute;
+            right: 5%;
+            top: 15px;
+            z-index: 1001;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 2000;
+            padding: 80px 20px 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+            display: flex;
+        }
+
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 500;
+            padding: 1rem;
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .mobile-register-btn {
+            background: white;
+            color: #667eea !important;
+            border-radius: 50px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 600px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="progressBar"></div>
+
+    <!-- Mobile Menu Button -->
+    <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="menu-close" onclick="toggleMobileMenu()">✕</div>
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#how-it-works" onclick="toggleMobileMenu()">How It Works</a>
+        <a href="#opportunities" onclick="toggleMobileMenu()">Opportunities</a>
+        <a href="#lifestyle" onclick="toggleMobileMenu()">Lifestyle</a>
+        <a href="#stories" onclick="toggleMobileMenu()">Stories</a>
+        <a href="#register" class="mobile-register-btn" onclick="redirectToAffiliate(); toggleMobileMenu()">Unlock Access</a>
+    </div>
+
+    <header id="header">
+        <nav>
+            <div class="logo">💰 Digital-Wealth</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#opportunities">Opportunities</a>
+                <a href="#lifestyle">Lifestyle</a>
+                <a href="#stories">Stories</a>
+                <a href="#support">Support</a>
+                <a href="#register" class="register-btn" onclick="redirectToAffiliate()">Unlock Access</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1 class="hidden">Discover Your Digital Wealth Potential</h1>
+        <p class="hidden">Join thousands of people who have unlocked new income streams through simple daily activities. The possibilities are endless.</p>
+        <div class="mystery-badge hidden">
+            ⭐ Your earning potential awaits ⭐
+        </div>
+        <br>
+        <a href="#" class="cta-button hidden" onclick="redirectToAffiliate(); return false;">Create Account To Start</a>
+        <p style="margin-top: 2rem; font-size: 0.9rem;" class="hidden">✨ Join 50,000+ members worldwide ✨</p>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item hidden-scale">
+                <div class="stat-number counter" data-target="50000">0</div>
+                <div class="stat-label">Happy Members</div>
+            </div>
+            <div class="stat-item hidden-scale">
+                <div class="stat-number counter" data-target="50">0</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-item hidden-scale">
+                <div class="stat-number counter" data-target="24">0</div>
+                <div class="stat-label">/7 Support</div>
+            </div>
+            <div class="stat-item hidden-scale">
+                <div class="stat-number counter" data-target="100">0</div>
+                <div class="stat-label">Payment Methods</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <h2 class="section-title hidden">Multiple Ways to Earn</h2>
+        <p class="section-subtitle hidden">Simple daily tasks that can transform your financial situation</p>
+        
+        <div class="features-grid">
+            <!-- Chat with Foreigners -->
+            <div class="feature-card hidden-left">
+                <div class="feature-image" style="background-image: url('images/phone_chatting.jpg')">
+                    <span class="feature-icon">💬</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Chatting with Lonely Foreigners</h3>
+                    <p class="feature-description">Connect with interesting people from around the world. Every conversation opens new doors and opportunities.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>🌎 Meet people from 50+ countries</li>
+                        <li>💫 Practice languages naturally</li>
+                        <li>⭐ Build international connections</li>
+                    </ul>
+                    <span class="earning-potential">Unlock your potential</span>
+                </div>
+            </div>
+
+            <!-- Paid Music Streaming -->
+            <div class="feature-card hidden">
+                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                    <span class="feature-icon">🎵</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Music Discovery</h3>
+                    <p class="feature-description">Love music? Turn your passion into rewards. Discover new artists and get recognized for your taste.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>🎧 Create trending playlists</li>
+                        <li>🎤 Early access to new music</li>
+                        <li>⭐ Shape music trends</li>
+                    </ul>
+                    <span class="earning-potential">Your taste matters</span>
+                </div>
+            </div>
+
+            <!-- Watch Videos -->
+            <div class="feature-card hidden-right">
+                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                    <span class="feature-icon">📺</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Get Paid For Sponsored Videos</h3>
+                    <p class="feature-description">Watch, like, and share engaging content. Your online activity creates value in ways you never imagined.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>📱 Discover viral content first</li>
+                        <li>💫 Your opinion shapes trends</li>
+                        <li>🔥 Be part of something bigger</li>
+                    </ul>
+                    <span class="earning-potential">Get rewarded for scrolling</span>
+                </div>
+            </div>
+
+            <!-- Paid Surveys -->
+            <div class="feature-card hidden-left">
+                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                    <span class="feature-icon">📊</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Share Your Voice</h3>
+                    <p class="feature-description">Companies want to hear from you. Your opinions shape future products and services.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>📝 Influence global brands</li>
+                        <li>🎯 Share what matters to you</li>
+                        <li>⭐ Be a market trendsetter</li>
+                    </ul>
+                    <span class="earning-potential">Your opinion pays</span>
+                </div>
+            </div>
+
+            <!-- Paid Ads & Spin -->
+            <div class="feature-card hidden">
+                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1533750516457-a7f992034fec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                    <span class="feature-icon">🎰</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Daily Surprises</h3>
+                    <p class="feature-description">Every day brings new opportunities. Watch, click, spin - you never know what rewards await.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>🎯 Daily bonus opportunities</li>
+                        <li>🎰 Exciting reward wheels</li>
+                        <li>💫 Surprise jackpots</li>
+                    </ul>
+                    <span class="earning-potential">Spin to win</span>
+                </div>
+            </div>
+
+            <!-- Fixed Taps & Loans -->
+            <div class="feature-card hidden-right">
+                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1565514158740-064f34bd6bcf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                    <span class="feature-icon">💰</span>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Financial Freedom</h3>
+                    <p class="feature-description">Simple actions lead to big possibilities. Build your financial future one tap at a time.</p>
+                    <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
+                        <li>👆 Easy daily activities</li>
+                        <li>💰 Access to financial tools</li>
+                        <li>⭐ Build your credit future</li>
+                    </ul>
+                    <span class="earning-potential">Your journey starts here</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lifestyle Gallery -->
+    <section class="lifestyle-gallery" id="lifestyle">
+        <h2 class="section-title hidden">The Digital-Wealth Lifestyle</h2>
+        <p class="section-subtitle hidden">Imagine what financial flexibility could mean for you</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item hidden-left">
+                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Celebration">
+                <div class="gallery-overlay">
+                    <h3>Financial Freedom</h3>
+                    <p>Celebrate your achievements</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item hidden">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Success team">
+                <div class="gallery-overlay">
+                    <h3>Community Success</h3>
+                    <p>Join thousands of achievers</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item hidden-right">
+                <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Dream vacation">
+                <div class="gallery-overlay">
+                    <h3>Dream Lifestyle</h3>
+                    <p>Turn possibilities into reality</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item hidden-left">
+                <img src="https://images.unsplash.com/photo-1557425955-df376b5903c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Work from anywhere">
+                <div class="gallery-overlay">
+                    <h3>Work Your Way</h3>
+                    <p>Freedom to choose your path</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="stories">
+        <h2 class="section-title hidden" style="color: white;">Real Stories, Real Impact</h2>
+        <p class="section-subtitle hidden" style="color: rgba(255,255,255,0.9);">Hear from people whose lives have changed</p>
+        
+        <div class="testimonial-grid">
+            <div class="testimonial-card hidden-left">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108777-466fd0c6a5a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah">
+                    <div>
+                        <div class="testimonial-name">Sarah M.</div>
+                        <div class="testimonial-country">Nairobi, Kenya</div>
+                    </div>
+                </div>
+                <div class="testimonial-quote">"I never imagined my phone could open so many doors. The opportunities here have changed my perspective on what's possible."</div>
+                <span class="testimonial-impact">✨ Living life on her terms</span>
+            </div>
+
+            <div class="testimonial-card hidden">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="David">
+                    <div>
+                        <div class="testimonial-name">David O.</div>
+                        <div class="testimonial-country">Lagos, Nigeria</div>
+                    </div>
+                </div>
+                <div class="testimonial-quote">"The flexibility is amazing. I can do this alongside my regular routine and see real progress in my financial goals."</div>
+                <span class="testimonial-impact">⭐ Building his future</span>
+            </div>
+
+            <div class="testimonial-card hidden-right">
+                <div class="testimonial-header">
+                    <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Maria">
+                    <div>
+                        <div class="testimonial-name">Maria G.</div>
+                        <div class="testimonial-country">Kampala, Uganda</div>
+                    </div>
+                </div>
+                <div class="testimonial-quote">"What started as curiosity became a game-changer. The community support and opportunities keep me motivated every day."</div>
+                <span class="testimonial-impact">💫 Creating new possibilities</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mystery Box Section -->
+    <section class="how-it-works">
+        <div class="mystery-box hidden-scale">
+            <h3>🎁 Your Earning Potential Awaits</h3>
+            <p>The exact amount you can earn depends on your effort, consistency, and the opportunities you seize. Some members have transformed their lives completely. Others enjoy a nice supplement to their income.</p>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">What will your story be?</p>
+        </div>
+    </section>
+
+    <!-- WhatsApp Support Section -->
+    <section class="whatsapp-section" id="support">
+        <div class="whatsapp-container hidden">
+            <div class="whatsapp-icon float-animation">📱</div>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Need Help? Chat With Us!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">Our support team is ready to assist you 24/7</p>
+            
+            <div class="whatsapp-number">
+                +254 700 000 000
+            </div>
+            
+            <p style="margin: 1rem 0; font-size: 1.1rem;">🇰🇪 Based in Nairobi, serving Africa and beyond</p>
+            
+            <a href="https://wa.me/254700000000?text=Hello%20Digital-Wealth%20Team!%20I%20need%20some%20help%20with..." 
+               class="whatsapp-button" 
+               target="_blank">
+                <span>💬</span>
+                Chat on WhatsApp Now
+                <span>→</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="register">
+        <h2 class="hidden">Ready to Explore Your Potential?</h2>
+        <p class="hidden">Join a community of go-getters who are discovering what's possible. Your journey starts with one simple step.</p>
+        <a href="#" class="cta-button hidden-scale" onclick="redirectToAffiliate(); return false;">Start Your Journey Now</a>
+        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;" class="hidden">
+            <span>✓ Free to join</span>
+            <span>✓ Instant access</span>
+            <span>✓ Choose your path</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1a1a1a; color: white; padding: 3rem 5% 1rem;">
+        <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <div class="hidden-left">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Digital-Wealth</h3>
+                <p>Your gateway to digital opportunities. Join thousands exploring new ways to create value.</p>
+                <div style="margin-top: 1rem;">
+                    <span>⭐ 4.8/5 from 10,000+ reviews</span>
+                </div>
+            </div>
+            
+            <div class="hidden">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Opportunities</h3>
+                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Chatting with Lonely Foreigners</a>
+                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Music Discovery</a>
+                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Content Engagement</a>
+                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Share Your Voice</a>
+            </div>
+            
+            <div class="hidden-right">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Payment Methods</h3>
+                <p style="color: #999;">M-Pesa • Airtel Money • MTN Mobile • PayPal • Bank Transfer</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid #333; color: #999;" class="hidden">
+            <p>&copy; 2024 Digital-Wealth. Your journey, your potential, your future.</p>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <a href="#" class="floating-register float-animation" onclick="redirectToAffiliate(); return false;">
+        🚀 Start Making Money
+    </a>
+
+    <a href="https://wa.me/254700000000?text=Hello%20Digital-Wealth%20Team!%20I%20need%20some%20help%20with..." 
+       class="floating-whatsapp float-animation" 
+       target="_blank"
+       title="Chat with us on WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Affiliate link configuration
+        const affiliateLink = 'https://earntrix.com/user/register.php?ref=onlinearn';
+
+        function redirectToAffiliate() {
+            window.location.href = affiliateLink;
+            return false;
+        }
+
+        // Scroll Progress Bar
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progressBar").style.width = scrolled + "%";
+            
+            // Header shrink effect
+            if (winScroll > 50) {
+                document.getElementById("header").classList.add("scrolled");
+            } else {
+                document.getElementById("header").classList.remove("scrolled");
+            }
+        };
+
+        // Scroll Animation
+        function checkScroll() {
+            const elements = document.querySelectorAll('.hidden, .hidden-left, .hidden-right, .hidden-scale');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+                
+                // Element is in viewport
+                if (elementTop < windowHeight - 100 && elementBottom > 0) {
+                    element.classList.add('show');
+                }
+            });
+        }
+
+        // Counter Animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const current = parseInt(counter.innerText);
+                const increment = target / 50; // Divide into 50 steps
+                
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(animateCounters, 20);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            });
+        }
+
+        // Trigger counter animation when stats section is in view
+        const statsSection = document.querySelector('.stats-section');
+        let counterTriggered = false;
+
+        function checkStats() {
+            if (!counterTriggered && statsSection.getBoundingClientRect().top < window.innerHeight) {
+                animateCounters();
+                counterTriggered = true;
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+            
+            if (mobileNav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (mobileNav && mobileNav.classList.contains('active') && 
+                !mobileNav.contains(event.target) && 
+                !menuBtn.contains(event.target)) {
+                toggleMobileMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                const mobileNav = document.getElementById('mobileNav');
+                if (mobileNav && mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+
+        // Initialize animations
+        window.addEventListener('load', () => {
+            checkScroll();
+            checkStats();
+        });
+
+        window.addEventListener('scroll', () => {
+            checkScroll();
+            checkStats();
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+
+        // Add floating animation to random elements
+        document.querySelectorAll('.feature-card, .testimonial-card').forEach((card, index) => {
+            if (index % 2 === 0) {
+                card.classList.add('float-animation');
+            }
+        });
+
+        console.log('Digital-Wealth - Discover Your Potential with Scroll Effects!');
+    </script>
+</body>
+</html>
