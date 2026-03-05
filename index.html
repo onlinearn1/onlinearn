@@ -1,9 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital-Wealth - Unlock Your Earning Potential</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,8 +15,8 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #f0f2f5;
+            color: #e0e0ff;
+            background: #0a0e27;
             overflow-x: hidden;
         }
 
@@ -64,10 +65,10 @@
             left: 0;
             width: 0%;
             height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #ff6b6b);
+            background: linear-gradient(90deg, #00d9ff, #ff006d, #39ff14);
             z-index: 1001;
             transition: width 0.1s ease;
-            box-shadow: 0 0 10px rgba(102,126,234,0.5);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.8);
         }
 
         /* Floating Animation */
@@ -81,39 +82,81 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* Counter Numbers */
-        .counter-box {
-            background: white;
-            padding: 2rem;
+        .mystery-box {
+            background: #1a1f3a;
+            padding: 3rem 2rem;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+            color: #e0e0ff;
         }
 
-        .counter-number {
-            font-size: 3rem;
-            font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+        .mystery-box h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .mystery-box p {
+            color: #a0a9ff;
+        }
+
+.counter-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    position: relative;
+}
+
+/* Optional: Add a subtle pulse animation when counting */
+.counter-number.counting {
+    animation: pulse 0.5s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 217, 255, 0.15);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         header.scrolled {
             padding: 0.5rem 0;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+            background: rgba(10, 14, 39, 0.98);
+            box-shadow: 0 5px 30px rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.4);
         }
 
         nav {
@@ -128,47 +171,70 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #c0c9ff;
             margin-left: 2rem;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #667eea;
+            color: #00d9ff;
         }
 
         .register-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white !important;
+            background: linear-gradient(45deg, #00d9ff, #ff006d);
+            color: #0a0e27 !important;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
-            transition: transform 0.3s !important;
+            transition: all 0.3s !important;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
         }
 
         .register-btn:hover {
             transform: translateY(-2px);
-            color: white !important;
+            color: #0a0e27 !important;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
         }
 
         /* Hero Section */
         .hero {
+            position: relative;
             margin-top: 80px;
-            background: linear-gradient(135deg, rgba(102,126,234,0.95), rgba(118,75,162,0.95)), 
-                        url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background: linear-gradient(135deg, rgba(0, 217, 255, 0.15), rgba(255, 0, 109, 0.15)), 
+                        url('Gemini_Generated_Image_38eckj38eckj38ec.png');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll;
             color: white;
             padding: 6rem 5%;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 10px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            z-index: 1;
+        }
+
+        .hero * {
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
@@ -199,42 +265,55 @@
         /* Features Grid */
         .how-it-works {
             padding: 5rem 5%;
-            background: #f8f9fa;
+            background: #0a0e27;
             text-align: center;
         }
 
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #333;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-subtitle {
-            color: #666;
+            color: #a0a9ff;
             margin-bottom: 3rem;
             font-size: 1.1rem;
         }
 
+        .testimonials .section-subtitle {
+            color: #a0a9ff;
+        }
+
+        .lifestyle-gallery .section-title,
+        .testimonials .section-title {
+            color: #00d9ff;
+        }
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background: white;
+            background: #1a1f3a;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.1);
             transition: all 0.3s;
             cursor: pointer;
+            border: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(102,126,234,0.3);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+            border-color: #00d9ff;
         }
 
         .feature-image {
@@ -276,29 +355,33 @@
         .feature-title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #333;
+            color: #00d9ff;
         }
 
         .feature-description {
-            color: #666;
+            color: #a0a9ff;
             margin-bottom: 1rem;
         }
 
         .earning-potential {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #00d9ff, #39ff14);
+            color: #0a0e27;
             padding: 0.5rem 1rem;
             border-radius: 50px;
             display: inline-block;
             font-size: 0.9rem;
             margin-top: 1rem;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
 
         /* Stats Section */
         .stats-section {
             padding: 4rem 5%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #0a0e27;
             color: white;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .stats-grid {
@@ -312,27 +395,32 @@
         .stat-item {
             text-align: center;
             padding: 2rem;
-            background: rgba(255,255,255,0.1);
+            background: #1a1f3a;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-label {
             font-size: 1.1rem;
             opacity: 0.9;
+            color: #a0a9ff;
         }
 
         /* Lifestyle Gallery */
         .lifestyle-gallery {
             padding: 4rem 5%;
-            background: white;
+            background: #0a0e27;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .gallery-grid {
@@ -348,7 +436,8 @@
             border-radius: 10px;
             overflow: hidden;
             height: 300px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
         }
 
         .gallery-item img {
@@ -390,8 +479,9 @@
         /* Testimonials */
         .testimonials {
             padding: 5rem 5%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0e27;
             color: white;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .testimonial-grid {
@@ -403,11 +493,11 @@
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.1);
+            background: #1a1f3a;
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
             transition: transform 0.3s;
         }
 
@@ -446,36 +536,69 @@
         }
 
         .testimonial-impact {
-            background: rgba(255,215,0,0.2);
+            background: rgba(0, 217, 255, 0.2);
             padding: 0.5rem 1rem;
             border-radius: 50px;
             display: inline-block;
             margin-top: 1rem;
             font-size: 0.9rem;
+            color: #00d9ff;
         }
 
         /* WhatsApp Section */
         .whatsapp-section {
             padding: 4rem 5%;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: #0a0e27;
             color: white;
             text-align: center;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .whatsapp-container {
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(255,255,255,0.1);
+            background: #1a1f3a;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 3rem 2rem;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
         }
 
         .whatsapp-icon {
             font-size: 5rem;
             margin-bottom: 1rem;
             animation: pulse 2s infinite;
+            color: #00d9ff;
+        }
+
+        .whatsapp-section h2 {
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .whatsapp-section p {
+            color: #a0a9ff;
+        }
+
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            color: #0a0e27;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
+            margin-top: 2rem;
+        }
+
+        .whatsapp-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.8);
         }
 
         .whatsapp-number {
@@ -483,26 +606,32 @@
             font-weight: bold;
             margin: 1.5rem 0;
             padding: 1rem 2rem;
-            background: rgba(255,255,255,0.2);
+            background: rgba(0, 217, 255, 0.2);
             border-radius: 50px;
             display: inline-block;
-            border: 2px solid white;
+            border: 2px solid #00d9ff;
             letter-spacing: 2px;
+            color: #00d9ff;
         }
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0e27;
             color: white;
             padding: 5rem 5%;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .cta-section p {
@@ -511,25 +640,35 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            color: #a0a9ff;
         }
 
         .cta-button {
             display: inline-block;
             padding: 1rem 3rem;
-            background: white;
-            color: #667eea;
+            background: linear-gradient(45deg, #00d9ff, #ff006d);
+            color: #0a0e27;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.2rem;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.6);
             margin-top: 2rem;
         }
 
         .cta-button:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.8);
+        }
+
+        .cta-features {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            color: #a0a9ff;
         }
 
         /* Floating Buttons */
@@ -558,8 +697,8 @@
             position: fixed;
             bottom: 2rem;
             left: 2rem;
-            background: #25D366;
-            color: white;
+            background: linear-gradient(45deg, #00d9ff, #39ff14);
+            color: #0a0e27;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -589,7 +728,7 @@
         .mobile-menu-btn {
             display: none;
             font-size: 2rem;
-            color: #667eea;
+            color: #00d9ff;
             cursor: pointer;
             position: absolute;
             right: 5%;
@@ -604,7 +743,8 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0e27;
+            border-left: 2px solid rgba(0, 217, 255, 0.3);
             z-index: 2000;
             padding: 80px 20px 20px;
             flex-direction: column;
@@ -621,22 +761,28 @@
         }
 
         .mobile-nav a {
-            color: white;
+            color: #a0a9ff;
             text-decoration: none;
             font-size: 1.3rem;
             font-weight: 500;
             padding: 1rem;
             width: 100%;
             text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            transition: color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: #00d9ff;
         }
 
         .mobile-register-btn {
-            background: white;
-            color: #667eea !important;
+            background: linear-gradient(45deg, #00d9ff, #ff006d);
+            color: #0a0e27 !important;
             border-radius: 50px;
             margin-top: 1rem;
             font-weight: bold;
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
         }
 
         .menu-close {
@@ -650,7 +796,51 @@
         }
 
         /* Media Queries */
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 1200px) {
+            .hero {
+                padding: 4rem 5%;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
             }
@@ -659,24 +849,276 @@
                 display: none;
             }
             
+            .gallery-item {
+                height: 250px;
+            }
+            
+            .mystery-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .whatsapp-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .cta-features {
+                gap: 1rem;
+                flex-direction: column;
+            }
+            
+            .hero {
+                padding: 3rem 5%;
+            }
+            
             .hero h1 {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1rem;
             }
             
+            .section-title {
+                font-size: 2rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .whatsapp-number {
+                font-size: 1.5rem;
+            }
+            
+            .floating-register {
+                bottom: 80px;
+                right: 20px;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .floating-whatsapp {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .hero {
+                margin-top: 70px;
+                background-attachment: scroll;
+            }
+            
+            .hero {
+                padding: 2rem 5%;
+            }
+            
+            .gallery-item {
+                height: 220px;
+            }
+            
+            .mystery-box {
+                padding: 1.5rem 1rem;
+            }
+            
+            .whatsapp-container {
+                padding: 1.5rem 1rem;
+                border-radius: 15px;
+            }
+            
+            .whatsapp-icon {
+                font-size: 3rem;
+            }
+            
+            .cta-features {
+                gap: 0.8rem;
+                flex-direction: column;
+                font-size: 0.9rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .feature-content {
+                padding: 1rem;
+            }
+            
+            .feature-title {
+                font-size: 1.1rem;
+            }
+            
+            .feature-description {
+                font-size: 0.9rem;
+            }
+            
+            .feature-content ul {
+                font-size: 0.85rem;
+                padding-left: 1rem;
             }
             
             .stat-number {
                 font-size: 2rem;
             }
             
+            .whatsapp-section h2 {
+                font-size: 2rem;
+            }
+            
+            .whatsapp-container {
+                padding: 2rem 1rem;
+            }
+            
             .whatsapp-number {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .floating-register {
+                bottom: 70px;
+                right: 15px;
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .floating-whatsapp {
+                bottom: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media only screen and (max-width: 320px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .hero {
+                margin-top: 60px;
+                padding: 1.5rem 3%;
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+            
+            .mystery-box {
+                padding: 1rem 0.8rem;
+                border-radius: 10px;
+            }
+            
+            .whatsapp-container {
+                padding: 1.2rem 0.8rem;
+                border-radius: 12px;
+            }
+            
+            .whatsapp-icon {
+                font-size: 2.5rem;
+            }
+            
+            .how-it-works,
+            .testimonials,
+            .lifestyle-gallery,
+            .stats-section {
+                padding: 2rem 3%;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .cta-features {
+                font-size: 0.8rem;
+                gap: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .feature-title {
+                font-size: 1rem;
+            }
+            
+            .feature-description {
+                font-size: 0.8rem;
+            }
+            
+            .feature-content ul {
+                font-size: 0.75rem;
+                padding-left: 0.8rem;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .whatsapp-number {
+                font-size: 1.2rem;
+            }
+            
+            .floating-register {
+                bottom: 60px;
+                right: 10px;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.7rem;
+            }
+            
+            .floating-whatsapp {
+                bottom: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
         }
     </style>
@@ -767,7 +1209,7 @@
                         <li>💫 Practice languages naturally</li>
                         <li>⭐ Build international connections</li>
                     </ul>
-                    <span class="earning-potential">Unlock your potential</span>
+                    <a class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Unlock your potential</a>
                 </div>
             </div>
 
@@ -777,20 +1219,20 @@
                     <span class="feature-icon">🎵</span>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">Music Discovery</h3>
+                    <h3 class="feature-title">Paid Music Streaming</h3>
                     <p class="feature-description">Love music? Turn your passion into rewards. Discover new artists and get recognized for your taste.</p>
                     <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
                         <li>🎧 Create trending playlists</li>
                         <li>🎤 Early access to new music</li>
                         <li>⭐ Shape music trends</li>
                     </ul>
-                    <span class="earning-potential">Your taste matters</span>
+                    <span class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Your taste matters</span>
                 </div>
             </div>
 
             <!-- Watch Videos -->
             <div class="feature-card hidden-right">
-                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                <div class="feature-image" style="background-image: url('images/pexels-cottonbro-5081404.jpg')">
                     <span class="feature-icon">📺</span>
                 </div>
                 <div class="feature-content">
@@ -801,7 +1243,7 @@
                         <li>💫 Your opinion shapes trends</li>
                         <li>🔥 Be part of something bigger</li>
                     </ul>
-                    <span class="earning-potential">Get rewarded for scrolling</span>
+                    <a class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Get rewarded for scrolling</a>
                 </div>
             </div>
 
@@ -811,14 +1253,14 @@
                     <span class="feature-icon">📊</span>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">Share Your Voice</h3>
-                    <p class="feature-description">Companies want to hear from you. Your opinions shape future products and services.</p>
+                    <h3 class="feature-title">Paid Surveys</h3>
+                    <p class="feature-description">Answer short market research surveys and earn per completed survey.</p>
                     <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
                         <li>📝 Influence global brands</li>
                         <li>🎯 Share what matters to you</li>
                         <li>⭐ Be a market trendsetter</li>
                     </ul>
-                    <span class="earning-potential">Your opinion pays</span>
+                    <a class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Your opinion pays</a>
                 </div>
             </div>
 
@@ -828,31 +1270,31 @@
                     <span class="feature-icon">🎰</span>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">Daily Surprises</h3>
+                    <h3 class="feature-title">Paid Ads & Spin</h3>
                     <p class="feature-description">Every day brings new opportunities. Watch, click, spin - you never know what rewards await.</p>
                     <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
                         <li>🎯 Daily bonus opportunities</li>
                         <li>🎰 Exciting reward wheels</li>
                         <li>💫 Surprise jackpots</li>
                     </ul>
-                    <span class="earning-potential">Spin to win</span>
+                    <a class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Spin to win</a>
                 </div>
             </div>
 
             <!-- Fixed Taps & Loans -->
             <div class="feature-card hidden-right">
-                <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1565514158740-064f34bd6bcf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                <div class="feature-image" style="background-image: url('images/casino\ \(2\).jpg')">
                     <span class="feature-icon">💰</span>
                 </div>
                 <div class="feature-content">
-                    <h3 class="feature-title">Financial Freedom</h3>
+                    <h3 class="feature-title">Fixed Taps And Loans</h3>
                     <p class="feature-description">Simple actions lead to big possibilities. Build your financial future one tap at a time.</p>
                     <ul style="text-align: left; margin: 1rem 0; padding-left: 1.5rem; color: #666;">
                         <li>👆 Easy daily activities</li>
                         <li>💰 Access to financial tools</li>
                         <li>⭐ Build your credit future</li>
                     </ul>
-                    <span class="earning-potential">Your journey starts here</span>
+                    <a class="earning-potential" onclick="redirectToAffiliate(); toggleMobileMenu();">Start your journey</a>
                 </div>
             </div>
         </div>
@@ -865,7 +1307,7 @@
         
         <div class="gallery-grid">
             <div class="gallery-item hidden-left">
-                <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Celebration">
+                <img src="images/casino (1).jpg" alt="Celebration">
                 <div class="gallery-overlay">
                     <h3>Financial Freedom</h3>
                     <p>Celebrate your achievements</p>
@@ -900,13 +1342,13 @@
 
     <!-- Testimonials -->
     <section class="testimonials" id="stories">
-        <h2 class="section-title hidden" style="color: white;">Real Stories, Real Impact</h2>
-        <p class="section-subtitle hidden" style="color: rgba(255,255,255,0.9);">Hear from people whose lives have changed</p>
+        <h2 class="section-title hidden">Real Stories, Real Impact</h2>
+        <p class="section-subtitle hidden">Hear from people whose lives have changed</p>
         
         <div class="testimonial-grid">
             <div class="testimonial-card hidden-left">
                 <div class="testimonial-header">
-                    <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108777-466fd0c6a5a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah">
+                    <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah">
                     <div>
                         <div class="testimonial-name">Sarah M.</div>
                         <div class="testimonial-country">Nairobi, Kenya</div>
@@ -943,7 +1385,7 @@
     </section>
 
     <!-- Mystery Box Section -->
-    <section class="how-it-works">
+    <section class="how-it-works" style="border-top: 1px solid rgba(0, 217, 255, 0.2);">
         <div class="mystery-box hidden-scale">
             <h3>🎁 Your Earning Potential Awaits</h3>
             <p>The exact amount you can earn depends on your effort, consistency, and the opportunities you seize. Some members have transformed their lives completely. Others enjoy a nice supplement to their income.</p>
@@ -959,15 +1401,15 @@
             <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">Our support team is ready to assist you 24/7</p>
             
             <div class="whatsapp-number">
-                +254 700 000 000
+                +256 726 902 882
             </div>
             
             <p style="margin: 1rem 0; font-size: 1.1rem;">🇰🇪 Based in Nairobi, serving Africa and beyond</p>
             
-            <a href="https://wa.me/254700000000?text=Hello%20Digital-Wealth%20Team!%20I%20need%20some%20help%20with..." 
+            <a href="https://wa.me/256726902882?text=Hello%20Digital-Wealth%20Team!%20I%20need%20some%20help%20with..." 
                class="whatsapp-button" 
                target="_blank">
-                <span>💬</span>
+                <span><i class="fab fa-whatsapp"></i></span>
                 Chat on WhatsApp Now
                 <span>→</span>
             </a>
@@ -979,7 +1421,7 @@
         <h2 class="hidden">Ready to Explore Your Potential?</h2>
         <p class="hidden">Join a community of go-getters who are discovering what's possible. Your journey starts with one simple step.</p>
         <a href="#" class="cta-button hidden-scale" onclick="redirectToAffiliate(); return false;">Start Your Journey Now</a>
-        <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;" class="hidden">
+        <div class="cta-features hidden">
             <span>✓ Free to join</span>
             <span>✓ Instant access</span>
             <span>✓ Choose your path</span>
@@ -987,10 +1429,10 @@
     </section>
 
     <!-- Footer -->
-    <footer style="background: #1a1a1a; color: white; padding: 3rem 5% 1rem;">
+    <footer style="background: #0a0e27; color: white; padding: 3rem 5% 1rem; border-top: 1px solid rgba(0, 217, 255, 0.2);">
         <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
             <div class="hidden-left">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">Digital-Wealth</h3>
+                <h3 style="background: linear-gradient(45deg, #00d9ff, #39ff14); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Digital-Wealth</h3>
                 <p>Your gateway to digital opportunities. Join thousands exploring new ways to create value.</p>
                 <div style="margin-top: 1rem;">
                     <span>⭐ 4.8/5 from 10,000+ reviews</span>
@@ -998,20 +1440,20 @@
             </div>
             
             <div class="hidden">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">Opportunities</h3>
-                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Chatting with Lonely Foreigners</a>
-                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Music Discovery</a>
-                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Content Engagement</a>
-                <a href="#" style="color: #999; text-decoration: none; display: block; margin-bottom: 0.5rem;">Share Your Voice</a>
+                <h3 style="background: linear-gradient(45deg, #00d9ff, #39ff14); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Opportunities</h3>
+                <a href="#" style="color: #a0a9ff; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s; transition: color 0.3s;" onmouseover="this.style.color='#00d9ff'" onmouseout="this.style.color='#a0a9ff'">Chatting with Lonely Foreigners</a>
+                <a href="#" style="color: #a0a9ff; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s;" onmouseover="this.style.color='#00d9ff'" onmouseout="this.style.color='#a0a9ff'">Music Discovery</a>
+                <a href="#" style="color: #a0a9ff; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s;" onmouseover="this.style.color='#00d9ff'" onmouseout="this.style.color='#a0a9ff'">Content Engagement</a>
+                <a href="#" style="color: #a0a9ff; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s;" onmouseover="this.style.color='#00d9ff'" onmouseout="this.style.color='#a0a9ff'">Share Your Voice</a>
             </div>
             
             <div class="hidden-right">
-                <h3 style="color: #667eea; margin-bottom: 1rem;">Payment Methods</h3>
-                <p style="color: #999;">M-Pesa • Airtel Money • MTN Mobile • PayPal • Bank Transfer</p>
+                <h3 style="background: linear-gradient(45deg, #00d9ff, #39ff14); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Payment Methods</h3>
+                <p style="color: #a0a9ff;">M-Pesa • Airtel Money • MTN Mobile • PayPal • Bank Transfer</p>
             </div>
         </div>
         
-        <div style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid #333; color: #999;" class="hidden">
+        <div style="text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(0, 217, 255, 0.2); color: #a0a9ff;" class="hidden">
             <p>&copy; 2024 Digital-Wealth. Your journey, your potential, your future.</p>
         </div>
     </footer>
@@ -1025,12 +1467,12 @@
        class="floating-whatsapp float-animation" 
        target="_blank"
        title="Chat with us on WhatsApp">
-        💬
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
         // Affiliate link configuration
-        const affiliateLink = 'https://earntrix.com/user/register.php?ref=onlinearn';
+        const affiliateLink = 'https://qashflux.com/user/register.php?ref=onlinearn';
 
         function redirectToAffiliate() {
             window.location.href = affiliateLink;
@@ -1068,34 +1510,74 @@
             });
         }
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
+function animateCounters() {
+    const counters = document.querySelectorAll('.counter');
+    
+    counters.forEach(counter => {
+        // Reset counter to 0 before starting
+        counter.innerText = '0';
+        
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000; // Animation duration in milliseconds (2 seconds)
+        const frameDuration = 1000 / 60; // 60fps
+        const totalFrames = Math.round(duration / frameDuration);
+        const increment = target / totalFrames;
+        
+        let currentFrame = 0;
+        
+        const timer = setInterval(() => {
+            currentFrame++;
             
-            counters.forEach(counter => {
-                const target = parseInt(counter.getAttribute('data-target'));
-                const current = parseInt(counter.innerText);
-                const increment = target / 50; // Divide into 50 steps
-                
-                if (current < target) {
-                    counter.innerText = Math.ceil(current + increment);
-                    setTimeout(animateCounters, 20);
-                } else {
-                    counter.innerText = target + '+';
-                }
-            });
-        }
-
-        // Trigger counter animation when stats section is in view
-        const statsSection = document.querySelector('.stats-section');
-        let counterTriggered = false;
-
-        function checkStats() {
-            if (!counterTriggered && statsSection.getBoundingClientRect().top < window.innerHeight) {
-                animateCounters();
-                counterTriggered = true;
+            // Calculate current value with easing for smooth animation
+            const progress = currentFrame / totalFrames;
+            // Use easeOutQuart for smooth deceleration
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.round(target * easedProgress);
+            
+            // Update counter
+            if (currentValue <= target) {
+                counter.innerText = currentValue.toLocaleString();
             }
+            
+            // Stop when target is reached
+            if (currentFrame >= totalFrames) {
+                clearInterval(timer);
+                counter.innerText = target.toLocaleString() + '+';
+            }
+        }, frameDuration);
+    });
+}
+
+// Trigger counter animation when stats section is in view
+const statsSection = document.querySelector('.stats-section');
+let counterTriggered = false;
+
+function checkStats() {
+    if (!counterTriggered && statsSection) {
+        const rect = statsSection.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
+        
+        if (isVisible) {
+            animateCounters();
+            counterTriggered = true;
         }
+    }
+}
+
+// Add scroll event listener with throttle for performance
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            checkStats();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Check on page load in case stats are already visible
+document.addEventListener('DOMContentLoaded', checkStats);
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1171,5 +1653,4 @@
         console.log('Digital-Wealth - Discover Your Potential with Scroll Effects!');
     </script>
 </body>
-
 </html>
